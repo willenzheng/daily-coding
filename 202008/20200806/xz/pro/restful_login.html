@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" href="./css/mui.css">
+		<script type="text/javascript">
+			function login(){
+				let _uname = uname.value;
+				let _upwd = upwd.value;
+				if(!_uname){
+					alert("用户名不能为空");
+					return;
+				}
+				if(!_upwd){
+					alert("密码不能为空");
+					return;
+				}
+				let xhr = new XMLHttpRequest();
+				xhr.onreadystatechange = function(){
+					if(xhr.readyState == 4 && xhr.status == 200){
+						let r = xhr.responseText;
+						if(r==1){
+							d1.innerHTML = "登录成功";
+							location.href="restful_list.html";
+						}else{
+							d1.innerHTML = "用户名密码错误";
+						}
+					}
+				}
+				xhr.open("GET",`/pro/login/${_uname}&${_upwd}`,true);
+				xhr.send();
+			}
+		</script>
+	</head>
+	<body>
+		<div style="margin: 100px;">
+			<h2 align="center">用户登录</h2>
+			<label for="uname">请输入用户名:</label><br>
+			<input type="text" id="uname" placeholder="请输入用户名"><br>
+			<label for="upwd">请输入密码:</label><br>
+			<input type="text" id="upwd" placeholder="请输入密码"><br>
+			<button type="button" class="mui-btn mui-btn-blue mui-btn-block" onclick="login()">登录</button>
+			<!-- <button onclick="login()">登录</button> -->
+			<div id="d1"></div>
+		</div>
+	</body>
+</html>

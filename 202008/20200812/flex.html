@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flex布局的属性对比</title>
+    <script>
+        function show() {
+            document.getElementById("container").style.flexDirection = document.getElementById("s1").value;
+            document.getElementById("container").style.flexWrap = document.getElementById("s2").value;
+            document.getElementById("container").style.justifyContent = document.getElementById("s3").value;
+            document.getElementById("container").style.alignItems = document.getElementById("s4").value;
+            document.getElementById("container").style.alignContent = document.getElementById("s5").value;
+        }
+        function set() {
+            var _id = document.getElementById("p1").value;
+            var _width = document.getElementById("p2").value;
+            var _height = document.getElementById("p3").value;
+            var _bgColor = document.getElementById("p4").value;
+            var _fontSize = document.getElementById("p5").value;
+            document.getElementById(`d${_id}`).style.width = `${_width}px`;
+            document.getElementById(`d${_id}`).style.height = `${_height}px`;
+            document.getElementById(`d${_id}`).style.backgroundColor = `${_bgColor}`;
+            document.getElementById(`d${_id}`).style.fontSize = `${_fontSize}px`;
+            if (_id > 6) {
+                document.getElementById(`d${_id}`).style.display = "block";
+                document.getElementById(`d${_id}`).innerHTML = _id;
+            }
+        }
+    </script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #container {
+            width: 1000px;
+            height: 600px;
+            /* background-color: #ccc; */
+            border:4px solid #000;
+            margin: 0 auto;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: flex-start;
+            align-items: stretch;
+            align-content: stretch;
+        }
+
+        #container>div {
+            /* color: white; */
+            text-align: center;
+            line-height: 100px;
+            border: 4px solid #000;
+        }
+
+        #d1 {
+            width: 200px;
+            /* background-color: rgb(255, 208, 1); */
+            font-size: 16px
+        }
+
+        #d2 {
+            width: 200px;
+            /* background-color: rgb(46, 152, 46); */
+            font-size: 16px
+        }
+
+        #d3 {
+            width: 200px;
+            /* background-color: rgb(139, 96, 214); */
+            font-size: 24px
+        }
+
+        #d4 {
+            width: 200px;
+            /* background-color: orange; */
+            font-size: 50px
+        }
+
+        #d5 {
+            width: 200px;
+            /* background-color: purple; */
+            font-size: 56px
+        }
+
+        #d6 {
+            width: 200px;
+            /* background-color: brown; */
+            font-size: 80px
+        }
+
+        #d7,
+        #d8,
+        #d9,
+        #d10,
+        #d11,
+        #d12,
+        #d13,
+        #d14,
+        #d15,
+        #d16,
+        #d17,
+        #d18,
+        #d19,
+        #d20 {
+            display: none;
+        }
+
+
+
+
+
+        #control {
+            width: 100%;
+            /* height: 100px; */
+            background-color: #ccc;
+            text-align: center;
+            position: fixed;
+            bottom: 0px;
+            overflow-x: auto;
+        }
+
+        #control>div {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-end;
+        }
+        select {
+            width:300px;
+            height:40px;
+            font-size:18px;
+        }
+
+        button {
+            width: 80%;
+            height: 40px;
+            background: -webkit-linear-gradient(top, #27b1f6 0%, #0aa1ed 100%);
+            border: 0;
+            border-radius: 8px;
+            /* outline: 0; */
+            margin-top: 10px;
+            margin-bottom: 20px;
+            color: #fff;
+            font-size: 18px;
+        }
+
+        #side_bar {
+            width: 200px;
+            height: 280px;
+            background-color: #ccc;
+            position: fixed;
+            bottom: 200px;
+            left: 0px;
+            padding:8px;
+        }
+
+        #side_bar>button {
+            margin-left: 15px;
+        }
+        .title{
+            font-size:20px;
+        }
+        .exp {
+            margin-top:5px;
+            margin-bottom:5px;
+            color:#666;
+            font-size:14px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="container">
+        <div id="d1">1</div>
+        <div id="d2">2</div>
+        <div id="d3">3</div>
+        <div id="d4">4</div>
+        <div id="d5">5</div>
+        <div id="d6">6</div>
+        <div id="d8"></div>
+        <div id="d9"></div>
+        <div id="d10"></div>
+        <div id="d11"></div>
+        <div id="d12"></div>
+        <div id="d13"></div>
+        <div id="d14"></div>
+        <div id="d15"></div>
+        <div id="d16"></div>
+        <div id="d17"></div>
+        <div id="d18"></div>
+        <div id="d19"></div>
+        <div id="d20"></div>
+    </div>
+    <footer id="control">
+        <div>
+            <div>
+                <p class="title">flex-direction</p>
+                <p class="exp">主轴方向</p>
+                <select name="" id="s1">
+                    <option value="row" title="1">row（水平从左到右）</option>
+                    <option value="row-reverse">row-reverse（水平，从右到左）</option>
+                    <option value="column">column（垂直，从上到下）</option>
+                    <option value="column-reverse">column-reverse（垂直，从下到上）</option>
+                </select>
+            </div>
+
+            <div>
+                <p class="title">flex-wrap</p>
+                <p class="exp">是否换行</p>
+                <select name="" id="s2">
+                    <option value="nowrap">nowrap（不换行）</option>
+                    <option value="wrap">wrap（换行，第一行在上方）</option>
+                    <option value="wrap-reverse">wrap-reverse（换行，第一行在下方）</option>
+                </select>
+            </div>
+
+            <div>
+                <p class="title">justify-content</p>
+                <p class="exp">项目在主轴的对齐的方式</p>
+                <select name="" id="s3">
+                    <option value="flex-start">flex-start（主轴起点对齐）</option>
+                    <option value="flex-end">flex-end（主轴终点对齐）</option>
+                    <option value="center">center（主轴居中对齐）</option>
+                    <option value="space-between">space-between（主轴两端对齐）</option>
+                    <option value="space-around">space-around（平分主轴空间）</option>
+                    <option value="space-enenly">space-enenly（平分主轴空间*）</option>
+                </select>
+            </div>
+
+            <div>
+                <p class="title">align-items</p>
+                <p class="exp">项目在交叉轴的对齐方式</p>
+                <select name="" id="s4">
+                    <option value="stretch">stretch（占满交叉轴空间）</option>
+                    <option value="flex-start">flex-start（交叉轴起点对齐）</option>
+                    <option value="flex-end">flex-end（交叉轴终点对齐）</option>
+                    <option value="center">center（交叉轴居中对齐）</option>
+                    <option value="baseline">baseline（文本基线对齐）</option>
+                </select>
+            </div>
+
+            <div>
+                <p class="title">align-content</p>
+                <p class="exp">主轴在交叉轴的对齐方式（多条主轴）</p>
+                <select name="" id="s5">
+                    <option value="stretch">stretch（占满交叉轴空间）</option>
+                    <option value="flex-start">flex-start（交叉轴起点对齐）</option>
+                    <option value="flex-end">flex-end（交叉轴终点对齐）</option>
+                    <option value="center">center（交叉轴居中对齐</option>
+                    <option value="space-between">space-between（交叉轴两端对齐）</option>
+                    <option value="space-around">space-around（平分交叉轴空间）</option>
+                    <option value="space-enenly">space-enenly（平分交叉轴空间*）</option>
+                </select>
+            </div>
+        </div>
+        <button onclick="show()" id="btn">查看</button>
+    </footer>
+    <div id="side_bar">
+        选择方块<br>
+        <input type="text" id="p1">1~6<br>
+        设置宽<br>
+        <input type="text" id="p2">px<br>
+        设置高<br>
+        <input type="text" id="p3">px<br>
+        设置背景颜色<br>
+        <input type="text" id="p4">HEX<br>
+        设置文字大小<br>
+        <input type="text" id="p5">px
+        <button onclick="set()">设置</button>
+        <div>
+</body>
+
+</html>

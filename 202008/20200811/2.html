@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container {
+            position: absolute;
+            color:#333;
+            font-size: 12px;
+            font-family: "simhei", Arial, Helvetica, sans-serif;
+        }
+
+        #d1,
+        #d2,
+        #d3,
+        #d4,
+        #d5,
+        #d6 {
+            background-color: #e8e8e8;
+            position: absolute;
+        }
+
+        #d1 {
+            width: 609px;
+            height: 377px;
+            top: 0px;
+            left: 0px;
+            box-sizing: border-box;
+            padding:50px;
+        }
+
+        #d2 {
+            width: 381px;
+            height: 377px;
+            top: 0px;
+            left: 619px;
+            box-sizing: border-box;
+            padding:50px 20px;
+        }
+
+        #d3 {
+            width: 375px;
+            height: 235px;
+            top: 387px;
+            left: 0px;
+            box-sizing: border-box;
+            padding:50px 20px;
+        }
+
+        #d4 {
+            width: 198px;
+            height: 235px;
+            top: 387px;
+            left: 385px;
+        }
+
+        #d5 {
+            width: 198px;
+            height: 235px;
+            top: 387px;
+            left: 593px;
+        }
+
+        #d6 {
+            width: 198px;
+            height: 235px;
+            top: 387px;
+            left: 801px;
+        }
+
+        p {
+            margin: 0;
+        }
+
+        #d1 .title,#d2 .title {
+            font-size:32px;
+        }
+        #d3 .title{
+            font-size:22px;
+        }
+        
+        .price {
+            color:#0aa1ed;
+            font-size:24px;
+        }
+        #d4 .price,#d5 .price,#d6 .price{
+            font-weight: bold;
+        }
+
+        button {
+            width: 120px;
+            height:40px;
+            background: -webkit-linear-gradient(top, #27b1f6 0%, #0aa1ed 100%);
+            border:0px;
+            border-radius: 3px;
+            outline: 0;
+            color:#fff;
+            font-size:16px;
+        }
+        #d4 button,#d5 button,#d6 button{
+            width:102px;
+            height:27px;
+            font-size: 14px;
+        }
+
+        #d1>div {
+            width:245px;
+            height:243px
+        }
+        #d2>div {
+            width:253px;
+            height:221px
+        }
+        #d3>div {
+            width:149px;
+            height:143px;
+        }
+        #d4>div,#d5>div,#d6>div {
+            width:149px;
+            height:143px;
+            text-align: center;
+            position: absolute;
+            top:140px;
+            left:25px;
+        }
+
+        #d1 .details,#d2 .details {
+            margin-bottom: 24px;
+        }
+
+        .price {
+            margin-bottom: 12px;
+        }
+
+        #d1>img {
+            position: absolute;
+            right:30px;
+            bottom:20px;
+        }
+        #d2>img {
+            position: absolute;
+            right:30px;
+            bottom:20px;
+        }
+        #d3>img {
+            position: absolute;
+            top:50px;
+            right:20px;
+        }
+        #d4>img {
+            position: absolute;
+            top:0px;
+        }
+        #d5>img {
+            position: absolute;
+            top:0px;
+        }
+        #d6>img {
+            position: absolute;
+            top:0px;
+        }
+
+        
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div id="d1">
+            <div>
+                <p class="title">Apple MacBook Air系列</p>
+                <p class="details">酷睿双核i5处理器|256GB SSD|8GB内存|英特尔HD显卡620含共享显卡内存</p>
+                <p class="price">￥6988.00</p>
+                <button>查看详情</button>
+            </div>
+            <img src="http://www.codeboy.com:9999/img/index/study_computer_img1.png" alt="">
+        </div>
+        <div id="d2">
+            <div>
+                <p class="title">小米Air 金属超轻薄</p>
+                <p class="details">酷睿双核i5处理器|512GB SSD|2GB内存|英特尔HD独立显卡</p>
+                <p class="price">￥3488.00</p>
+                <button>查看详情</button>
+            </div>
+            <img src="http://www.codeboy.com:9999/img/index/study_computer_img2.png" alt="">
+        </div>
+        <div id="d3">
+            <div>
+                <p class="title">联想E480C 轻薄系列</p>
+                <p class="price">￥5399.00</p>
+                <button>查看详情</button>
+            </div>
+            <img src="http://www.codeboy.com:9999/img/index/study_computer_img3.png" alt="">
+        </div>
+        <div id="d4">
+            <img src="http://www.codeboy.com:9999/img/index/study_computer_img4.png" alt="">
+            <div>
+                <p class="title">华硕RX310 金属超极本</p>
+                <p class="price">￥4966.00</p>
+                <button>查看详情</button>
+            </div>
+        </div>
+        <div id="d5">
+            <img src="http://www.codeboy.com:9999/img/index/study_computer_img5.png" alt="">
+            <div>
+                <p class="title">联想小新700 电竞版游戏本</p>
+                <p class="price">￥6299.00</p>
+                <button>查看详情</button>
+            </div>
+        </div>
+        <div id="d6">
+            <img src="http://www.codeboy.com:9999/img/index/study_computer_img3.png" alt="">
+            <div>
+                <p class="title">戴尔灵越燃7000 轻薄窄边</p>
+                <p class="price">￥5199.00</p>
+                <button>查看详情</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

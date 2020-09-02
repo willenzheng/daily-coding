@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script>
+			function del(){
+				let _uid = uid.value;
+				if(!_uid){
+					alert('编号不能为空');
+					return;
+				}
+				let xhr = new XMLHttpRequest();
+				xhr.onreadystatechange = function(){
+					if(xhr.readyState == 4 && xhr.status == 200){
+						let r = xhr.responseText;
+						if(r == 1){
+							d1.innerHTML = "删除成功";
+						}else{
+							d1.innerHTML = "删除失败";
+						}
+					}
+				}
+				xhr.open("delete",`/ajax/restful_delete/${_uid}`,true);
+				xhr.send();
+			}
+		</script>
+	</head>
+	<body>
+		<input type="text" id="uid"><br>
+		<button onclick="del()">删除</button>
+		<div id="d1"></div>
+	</body>
+</html>

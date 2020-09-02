@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" href="./css/mui.css">
+		<style type="text/css">
+		</style>
+		<script>
+			function show(){
+				//alert('111');
+				let obj=new URLSearchParams(location.search);
+				let _uid=obj.get("uid");
+				// console.log(typeof _uid);
+				// //let $uid = document.getElementById("uid")
+				// let num = Number(_uid);
+				// console.log(num);
+				uid.value = _uid;
+				let xhr = new XMLHttpRequest();
+				xhr.onreadystatechange = function(){
+					if(xhr.readyState == 4 && xhr.status == 200){
+						let r = xhr.responseText;
+						if(!r){
+							alert("用户不存在");
+						}else{
+							let arr = JSON.parse(r);
+							uname.value = arr[0].uname;
+							upwd.value = arr[0].upwd;
+							phone.value = arr[0].phone;
+							if(arr[0].gender==1){
+								man.checked = true;
+							}else if(arr[0].gender == 0){
+								wman.checked = true;
+							}else{
+								unk.checked = true;
+							}
+						}
+					}
+				}
+				xhr.open("GET",`/pro/search/${_uid}`,true);
+				xhr.send();
+			}
+			function user_update(){
+				//获取用户输入的值
+				let _gender = "-1";
+				if(man.checked){
+					_gender = "1";
+				}else if(wman.checked){
+					_gender = "0";
+				};
+				console.log(_gender);
+				let _uname = uname.value;
+				let _upwd = upwd.value;
+				let _phone = phone.value;
+				let _uid = uid.value;
+				// if(!_uid){
+				// 	alert('编号不能为空');
+				// }
+				//1.创建异步对象
+				let xhr = new XMLHttpRequest();
+				//4.接收响应,创建监听器
+				xhr.onreadystatechange = function(){
+					if(xhr.readyState == 4 && xhr.status == 200){
+						let r = xhr.responseText;
+						if(r==1){
+							alert( "修改成功")
+							location.href="restful_list.html";
+						}else{
+							alert( "修改失败")
+						}
+					}
+				}
+				//2.创建请求,打开链接
+				xhr.open("put",`/pro/update`,true);
+				xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+				let formdata = `uname=${_uname}&upwd=${_upwd}&phone=${_phone}&uid=${_uid}&gender=${_gender}`;
+				console.log(formdata)
+				//3.发送请求
+				xhr.send(formdata);
+				
+			}
+			function update(){
+				d1.innerHTML =`<button type="button" class="mui-btn mui-btn-blue mui-btn-block" onclick="user_update()">确认修改</button>`; 
+				// `<button onclick="user_update()">确认修改</button>`;
+			}
+		</script>
+	</head>
+	<body onload="show()">
+		<div style="margin-top: 100px;">
+			<h2 align="center">修改用户信息</h2>
+			<label for="uid">编号:</label>
+			<input type="text" id="uid" disabled=""><br>
+			<label for="uname">用户名:</label>
+			<input type="text" id="uname" disabled=""><br>
+			<label for="upwd">密码:</label>
+			<input type="text" id="upwd" onfocus="update()"><br>
+			<label for="phone">电话:</label>
+			<input type="text" id="phone"onfocus="update()"><br>
+			<label for="">性别:</label>
+			<label for="man">男:</label>
+			<input type="radio" id="man" name="gender" value="1" onfocus="update()">
+			<label for="wman">女:</label>
+			<input type="radio" id="wman" name="gender" value="0" onfocus="update()">
+			<label for="unk">保密:</label>
+			<input type="radio" id="unk" name="gender" value="-1" onfocus="update()">
+			<div id="d1">
+				
+			</div>
+		</div>
+		<!-- <button onclick="user_update()">确认修改</button>-->
+	</body> 
+</html>

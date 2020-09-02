@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var user=[
+            {uname:'dingding',email:'ding@qq.com',phone:'13511011000',realName:'丁春秋',gender:"女",operation:'<a href="#">删除</a><a href="#">修改</a>'},
+            {uname:'dangdang',email:'dang@qq.com',phone:'13511011000',realName:'丁春秋',gender:"女",operation:'<a href="#">删除</a><a href="#">修改</a>'},
+            {uname:'doudou',email:'dou@qq.com',phone:'13511011000',realName:'丁春秋',gender:"女",operation:'<a href="#">删除</a><a href="#">修改</a>'},
+            {uname:'yaya',email:'ya@qq.com',phone:'13511011000',realName:'丁春秋',gender:"女",operation:'<a href="#">删除</a><a href="#">修改</a>'},
+            {uname:'1111',email:'441966193@qq.com',phone:'13511011000',realName:'丁春秋',gender:"女",operation:'<a href="#">删除</a><a href="#">修改</a>'},
+            {uname:'ABCD',email:'123@qq.com',phone:'13511011000',realName:'丁春秋',gender:"女",operation:'<a href="#">删除</a><a href="#">修改</a>'},
+            {uname:'mohk',email:'11@qq.com',phone:'13511011000',realName:'丁春秋',gender:"女",operation:'<a href="#">删除</a><a href="#">修改</a>'},
+            {uname:'121123',email:'491000888@qq.com',phone:'13511011000',realName:'丁春秋',gender:"女",operation:'<a href="#">删除</a><a href="#">修改</a>'},
+            {uname:'55555',email:'55555555@qq.com',phone:'13511011000',realName:'丁春秋',gender:"女",operation:'<a href="#">删除</a><a href="#">修改</a>'},
+            {uname:'xuyong',email:'12345678@qq.com',phone:'13511011000',realName:'丁春秋',gender:"女",operation:'<a href="#">删除</a><a href="#">修改</a>'},
+            {uname:'admin',email:'mail@qq.com',phone:'13511011000',realName:'丁春秋',gender:"女",operation:'<a href="#">删除</a><a href="#">修改</a>'},
+            {uname:'siyongbo',email:'ding@qq.com',phone:'13511011000',realName:'丁春秋',gender:"女",operation:'<a href="#">删除</a><a href="#">修改</a>'},
+            {uname:'qwerty',email:'ding@qq.com',phone:'13511011000',realName:'丁春秋',gender:"女",operation:'<a href="#">删除</a><a href="#">修改</a>'},
+            {uname:'dingziqiang',email:'ding@qq.com',phone:'13511011000',realName:'丁春秋',gender:"女",operation:'<a href="#">删除</a><a href="#">修改</a>'},
+            {uname:'hdb2264068',email:'ding@qq.com',phone:'13511011000',realName:'丁春秋',gender:"女",operation:'<a href="#">删除</a><a href="#">修改</a>'},
+            {uname:'wenhua',email:'ding@qq.com',phone:'13511011000',realName:'丁春秋',gender:"女",operation:'<a href="#">删除</a><a href="#">修改</a>'},
+        ]
+        
+        function show(){
+            var htmlstr=`
+                <table border="1">
+                    <thead>
+                        <th>登录名称</th>
+                        <th>电子邮箱</th>
+                        <th>联系方式</th>
+                        <th>用户姓名</th>
+                        <th>用户性别</th>
+                        <th>操作</th>
+                    </thead>
+                `;
+            var obj_div=document.getElementById('d1');
+            for(var i=0;i<user.length;i++)
+            {
+                htmlstr+=`
+                <tr>
+                    <td>${user[i].uname}</td>
+                    <td>${user[i].email}</td>
+                    <td>${user[i].phone}</td>
+                    <td>${user[i].realName}</td>
+                    <td>${user[i].gender}</td>
+                    <td>${user[i].operation}</td>
+                </tr>
+                `;
+            }   
+            htmlstr+=`
+                </table>
+            `;
+            obj_div.innerHTML=htmlstr;
+        }
+    </script>
+</head>
+<body>
+    <button onclick="show()">显示表格</button>
+    <div id="d1"></div>
+</body>
+</html>

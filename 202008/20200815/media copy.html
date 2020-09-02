@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        #d1,#d1>div{
+            border:1px solid #000;
+        }
+        #d1{
+            width:80%;margin:0 auto;
+            display:flex;
+            flex-wrap:wrap;
+        }
+        @media (min-width:576px){
+            #left{
+                flex:0 0 100%;
+            }
+            #center{
+                flex:0 0 100%;
+            }
+            #right{
+                flex:0 0 100%;
+            }
+            #center>div>img{
+                width:50%;
+            }
+        }
+        @media (min-width:768px){
+            #left{
+                flex:0 0 30%;
+            }
+            #center{
+                flex:0 0 70%;
+            }
+            #right{
+                display:none;
+            }
+            #center>div>img{
+                width:25%;
+            }
+        }
+        @media (min-width:992px){
+            
+            #left{
+                flex:0 0 20%;
+            }
+            #center{
+                flex:0 0 60%;
+            }
+            #right{
+                display:block;
+                flex:0 0 20%;
+            }
+            /* #center>div>img{
+                width:25%;
+            } */
+        }
+        
+        #center>div{
+            display:flex;
+            flex-wrap:wrap;
+        }
+        #center>div>img{
+            padding:5px;
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="d1">
+        <div id="left">
+            <ul>
+                <li ><a href="#">豆蔻年华</a></li>
+                <li ><a href="#">豆蔻年华</a></li>
+                <li ><a href="#">豆蔻年华</a></li>
+                <li ><a href="#">豆蔻年华</a></li>
+                <li ><a href="#">豆蔻年华</a></li>
+                <li ><a href="#">豆蔻年华</a></li>
+            </ul>
+        </div>
+        <div id="center">
+            <div> 
+                <img src="https://images.pexels.com/photos/2602451/pexels-photo-2602451.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="" >
+                <img src="https://images.pexels.com/photos/2602451/pexels-photo-2602451.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="" >
+                <img src="https://images.pexels.com/photos/2602451/pexels-photo-2602451.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt=""  >
+                <img src="https://images.pexels.com/photos/2602451/pexels-photo-2602451.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt=""  >
+            </div>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Provident sapiente accusamus aperiam repellat cum corporis, atque temporibus ea deleniti aliquam. Nesciunt asperiores quae cupiditate iure id, veritatis dolore iste ad deserunt explicabo dolores illo aspernatur eligendi libero recusandae? Officiis doloremque inventore commodi facere neque assumenda voluptates aperiam, consequatur laboriosam perferendis eius optio recusandae, facilis eos itaque veniam voluptate, cupiditate quae ipsum nemo soluta. Eaque eligendi tempora quidem officiis quos voluptatem non, sint officia, esse quibusdam et nesciunt facere earum iure voluptate odit corrupti veniam possimus obcaecati ipsa alias libero ducimus! Ea, quos iure. Qui sit enim modi nisi assumenda repellendus, impedit incidunt rerum earum iusto beatae officiis provident, inventore deleniti quod quo iure ab repudiandae vel. Adipisci, impedit totam nisi harum saepe excepturi doloremque error mollitia unde modi cumque molestias eius asperiores, natus blanditiis placeat est voluptatibus numquam quasi, tempora magni quae exercitationem soluta. Magnam, quibusdam animi. Exercitationem autem maiores aspernatur, recusandae eum quis dignissimos corrupti eveniet asperiores qui, adipisci nostrum quo repudiandae, reiciendis consequuntur cum temporibus excepturi! Excepturi eaque repudiandae modi! Accusamus animi illum corrupti deserunt magni, tempore hic, fugit nisi autem voluptas totam voluptates voluptate impedit. Ex provident pariatur distinctio officia labore itaque esse sunt, aliquam cum porro!
+        </div>
+        <div id="right">
+            右侧广告 Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque quidem, ex nobis nemo voluptatibus praesentium sint modi amet labore eius voluptatum rem, quasi vitae ipsum assumenda. Laborum voluptas rem, adipisci amet repellendus facere quibusdam? Voluptates suscipit omnis architecto assumenda eveniet quidem hic, accusantium minus numquam! Aspernatur tempore blanditiis commodi beatae optio molestias, corrupti cum architecto nisi sint corporis vel unde libero? Omnis excepturi consequuntur quis dolorum nemo? Quas aliquam aperiam necessitatibus libero blanditiis sed placeat ea earum assumenda id unde, provident quam cumque adipisci vitae, repellendus reprehenderit voluptas. Assumenda enim necessitatibus magni excepturi beatae est impedit sit soluta autem magnam, officiis fugiat et quo suscipit fuga deserunt molestiae quae quisquam velit eius facilis vero. Reiciendis ad assumenda numquam aliquam, consequuntur excepturi saepe eum dolor deserunt aperiam nihil quisquam, nam, autem aut atque! Quaerat harum laboriosam, autem alias dolorum ipsam repellendus adipisci unde nostrum numquam aperiam rem ad molestiae nulla? Obcaecati ex quas excepturi impedit distinctio cupiditate deserunt molestiae. Harum labore quisquam numquam consequuntur optio quidem, similique aliquam incidunt dicta perferendis architecto ex reiciendis culpa! Consequuntur eligendi, sit aspernatur similique fugiat assumenda fugit nihil, modi placeat maiores, voluptate voluptates quidem ipsam error doloremque. Nihil libero officiis assumenda laborum recusandae distinctio aperiam.
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>点击按钮，获取所有用户列表，直接放入div显示</title>
+    <script>
+        function show(){
+            var xhr=new XMLHttpRequest();
+            xhr.open("get","/list",true);
+            xhr.send();
+            xhr.onreadystatechange=function(){
+                if(xhr.readyState==4 && xhr.status==200){
+                    var r=[];
+                    r=xhr.responseText;
+                    var arr=JSON.parse(r);
+                    var strHTML=`
+                        <table border="1" bordercolor="purple">
+                            <tr>
+                                <th>用户姓名</th>
+                                <th>用户邮箱</th>
+                                <th>联系方式</th>
+                                <th>真实姓名</th>
+                                <th>用户性别</th>
+                                <th>操作</th>
+                        `;
+                    for(var i=0;i<arr.length;i++){
+                        var gender;
+                        if(arr[i].gender===1){
+                            gender="男";
+                        }else if(arr[i].gender===0){
+                            gender="女";
+                        }else {
+                            gender="未知";
+                        }
+                        strHTML+=`
+                            <tr>
+                                <td>${arr[i].uname}</td>
+                                <td>${arr[i].email}</td>
+                                <td>${arr[i].phone}</td>
+                                <td>${arr[i].user_name}</td>
+                                <td>${gender}</td>
+                                <td>
+                                    <a href="#">更改</ea>
+                                    <a href="#">删除</a>
+                                </td>
+                            </tr>
+                        `;
+                    }
+                    strHTML+="</table>";
+                    d1.innerHTML=strHTML;
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <button onclick="show()">获取所有用户列表</button>
+    <div id="d1"></div>
+</body>
+</html>

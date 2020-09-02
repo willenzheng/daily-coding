@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <!-- <meta name="viewport"content="width=device-width,user-scalable=no,initial-scale=1.0,  maximum-scale=1.0,minimum-scale=1.0">	 -->
+    <title>动画时钟</title>
+    <script>
+        function setTime(){
+            var myDate=new Date();
+            var _h=myDate.getHours();
+            var _m=myDate.getMinutes();
+            var _s=myDate.getSeconds();
+            console.log(_h,_m,_s);
+            var degH=(_h-12)/12*360;
+            document.getElementById("hour").style.transform=`rotate(${degH}deg)`;
+            var degM=_m/60*360;
+            document.getElementById("minute").style.transform=`rotate(${degM}deg)`;
+            var degS=_s/60*360;
+            document.getElementById("second").style.transform=`rotate(${degS}deg)`;
+            // var key=`@keyframes go {
+            //     from{transform:rotate(${degH}deg)}
+            //     to{transform:roatate(${degH+360}deg)}
+            // }`;
+            // var style=document.createElement("style");
+            // style.type="text/css";
+            // style.innerHTML="";
+            // document.getElementsByTagName("head")[0].appendChild(style);
+            // this.stylesheet=document.styleSheets[document.styleSheets.length-1];
+            // try
+            
+        }
+    </script>
+    <style>
+        body{
+            width:100%;
+            height: 100vh;
+            background-color:#ecf0f3;
+            margin:0;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #border{
+            width:60vmin;
+            height:60vmin;
+            background-color:#ecf0f3;
+            border-radius:60vmin;
+            box-shadow: -4vh -4vh 8vh rgba(255,255,255,.6);
+            box-shadow: 4vh 4vh 8vh rgba(192,192,192,.8);
+            position: relative;
+        }
+        @keyframes go {
+            /* from{transform: rotate(0deg);} */
+            to{transform: rotate(720deg);}
+        }
+        #second{
+            width:1vmin;
+            height:25vmin;
+            background-color: #EB4132;
+            border-radius: 1vmin;
+            box-shadow:0vh 0vh 3vh rgba(120,120,120,0.4);
+            position:absolute;
+            top:5vmin;
+            left:29.5vmin;
+            animation-name: go;
+            animation-duration: 60s;
+            animation-iteration-count:infinite;
+            animation-timing-function:linear;
+            transform-origin:center bottom;
+        }
+        #minute{
+            width:1.5vmin;
+            height:20vmin;
+            background-color:#FBBD00;
+            border-radius:1.5vmin;
+            box-shadow:0vh 0vh 2vh rgba(88,88,88,.4);
+            position:absolute;
+            top:10vmin;
+            left:29.25vmin;
+            animation-name: go;
+            animation-duration: 3600s;
+            animation-iteration-count:infinite;
+            animation-timing-function:linear;
+            transform-origin:center bottom;
+        }
+        #hour{
+            width:2vmin;
+            height:15vmin;
+            background-color:#2179EC;
+            border-radius:2vmin;
+            box-shadow:0vh 0vh 1vh rgba(33,33,33,.4);
+            position:absolute;
+            top:15vmin;
+            left:29vmin;
+            animation-name: go;
+            animation-duration: 216000s;
+            animation-iteration-count:infinite;
+            animation-timing-function:linear;
+            transform-origin:center bottom;
+        }
+        #cover{
+            width:4vmin;
+            height:4vmin;
+            background-color:#31A952;
+            box-shadow:1vh 1vh 3vh rgba(120,120,120,0.4);
+            border-radius:3vmin;
+            position:absolute;
+            top:28vmin;
+            left:28vmin;
+        }
+        .num{
+            color:#bbb;
+            font-size:4vmin;
+            font-weight: lighter;
+        }
+        #n1{
+            position:absolute;
+            top:6vmin;
+            right:14vmin;
+        }
+        #n2{
+            position:absolute;
+            top:14vmin;
+            right:6vmin;
+        }
+        #n3{
+            position:absolute;
+            top:28vmin;
+            right:2vmin;
+        }
+        #n4{
+            position:absolute;
+            bottom:14vmin;
+            right:6vmin;
+        }
+        #n5{
+            position:absolute;
+            bottom:6vmin;
+            right:14vmin;
+        }
+        #n6{
+            position:absolute;
+            bottom:1vmin;
+            left:29vmin;
+        }
+        #n7{
+            position:absolute;
+            bottom:6vmin;
+            left:14vmin;
+        }
+        #n8{
+            position:absolute;
+            bottom:14vmin;
+            left:6vmin;
+        }
+        #n9{
+            position:absolute;
+            top:28vmin;
+            left:2vmin;
+        }
+        #n10{
+            position:absolute;
+            top:14vmin;
+            left:6vmin;
+        }
+        #n11{
+            position:absolute;
+            top:6vmin;
+            left:14vmin;
+        }
+        #n12{
+            position:absolute;
+            top:1vmin;
+            left:28vmin;
+        }
+
+
+
+    </style>
+
+
+</head>
+
+
+
+<body onload="setTime()">
+    <div id="border">
+        <div id="n1" class="num">1</div>
+        <div id="n2" class="num">2</div>
+        <div id="n3" class="num">3</div>
+        <div id="n4" class="num">4</div>
+        <div id="n5" class="num">5</div>
+        <div id="n6" class="num">6</div>
+        <div id="n7" class="num">7</div>
+        <div id="n8" class="num">8</div>
+        <div id="n9" class="num">9</div>
+        <div id="n10" class="num">10</div>
+        <div id="n11" class="num">11</div>
+        <div id="n12" class="num">12</div>
+        <div id="hour"></div>
+        <div id="minute"></div>
+        <div id="second"></div>
+        <div id="cover"></div>
+    </div>
+</body>
+</html>

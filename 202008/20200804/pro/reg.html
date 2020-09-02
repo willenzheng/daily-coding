@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户注册</title>
+    <script>
+        function setspan1(){
+            s1.innerHTML="";
+        }
+        function setspan2(){
+            s2.innerHTML="";
+        }
+
+
+        //验证用户名
+        function check_user(){
+            var _user=user.value;
+            if(!_user){
+                s1.innerHTML="用户名不能为空";
+                b1.disabled=true;
+                upwd.disabled=true;
+            }else {
+                var xhr=new XMLHttpRequest();
+                xhr.onreadystatechange=function(){
+                    if(xhr.readyState==4&&xhr.status==200){
+                        var r=xhr.responseText;
+                        if(r==1){
+                            s1.innerHTML="用户名重复";
+                            b1.disabled=true;
+                            upwd.disabled=true;
+                        }else{
+                            b1.disabled=false;
+                            upwd.disabled=false;
+                        }
+                    }
+                }
+                xhr.open("get","/pro/reg/"+_user,true)
+                xhr.send();
+            }
+            
+        }
+
+
+        //验证密码
+        function check_upwd(){
+            var _upwd=upwd.value;
+            if(!_upwd){
+                s2.innerHTML="密码不能为空";
+                b1.disabled=true;
+            }else if(_upwd.length<3){
+                s2.innerHTML="密码不能小于3位";
+                b1.disabled=true;
+            }else {
+                s2.innerHTML="";
+                b1.disabled=false;
+            }
+        }
+
+
+        //插入用户
+        function sert(){
+            var _user=user.value;
+            var _upwd=upwd.value;
+            var xhr=new XMLHttpRequest();
+            xhr.onreadystatechange=function(){
+                if(xhr.readyState==4&&xhr.status==200){
+                    var r=xhr.responseText;
+                    if(r==1){
+                        alert("注册成功");
+                        location.href="list.html";
+                    }else {
+                        alert("注册失败");
+                    }
+                }
+            }
+            xhr.open("get",`/pro/sert/${_user}&${_upwd}`,true)
+            xhr.send();
+        }
+    </script>
+</head>
+<body>
+    <fieldset>
+        <legend>用户注册</legend>
+        <input type="text" onblur="check_user()" onfocus="setspan1()" id="user">用户名<span id="s1" style="color:red"></span><br>
+        <input type="text" onblur="check_upwd()" onfocus="setspan2()" id="upwd">密码<span id="s2" style="color:red"></span><br>
+        <button onclick="sert()" id="b1">注册</button>
+    </fieldset>
+</body>
+</html>

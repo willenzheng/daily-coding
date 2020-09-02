@@ -1,0 +1,9 @@
+#d2 {
+  color: blue; }
+
+#container {
+  color: red; }
+  #container div {
+    color: yellow; }
+    #container div div {
+      color: green; }

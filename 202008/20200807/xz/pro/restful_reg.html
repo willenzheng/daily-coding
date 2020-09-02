@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" href="./css/mui.css">
+			<style>
+				span{
+					color: #CF2D28;
+				}
+			</style>
+		<script>
+			function show_uname(){
+				uname_msg.innerHTML="用户名在6~10之间";
+			}
+			function check_uname(){
+				let $uname=uname.value;
+				if(!$uname){
+					uname_msg.innerHTML="用户名不能为空";
+					return;
+				}else if($uname.length>10 || $uname.length<6){
+					uname_msg.innerHTML="格式错误";
+				}else{
+					select_name($uname);
+				}
+				
+			}
+			function select_name(_uname){
+				let xhr = new XMLHttpRequest();
+				xhr.onreadystatechange = function(){
+					if(xhr.readyState == 4 && xhr.status == 200){
+						let r = xhr.responseText;
+						//console.log(r);
+						if(r==1){
+							uname_msg.innerHTML="√";
+						}else{
+							uname_msg.innerHTML="×";
+							alert("用户名不可用");
+						}
+					}
+				}
+				xhr.open("get",`/pro/checkName/${_uname}`,true);
+			//	xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+			//let formdata = `uname=${_uname}`;
+				xhr.send();
+			}
+			function show_upwd(){
+				upwd_msg.innerHTML="用户密码在8~12";
+			}
+			function check_upwd(){
+				let $upwd=upwd.value;
+				if(!$upwd){
+					upwd_msg.innerHTML="用户密码不能为空";
+				}else if($upwd.length>12 || $upwd.length<8){
+					upwd_msg.innerHTML="格式错误";
+				}else{
+					upwd_msg.innerHTML="√";
+				}
+				//bug的调试
+				let $cpwd=cpwd.value;
+				if(!$cpwd){
+					cpwd_msg.innerHTML="再输入一次密码"
+				}else if($upwd==$cpwd){
+					cpwd_msg.innerHTML="√";
+				}else{
+					cpwd_msg.innerHTML="两次输入不一致";
+				}
+			}
+			function show_cpwd(){
+				cpwd_msg.innerHTML="请在输入一遍密码";
+			}
+			function check_cpwd(){
+				if(!cpwd.value){
+					cpwd_msg.innerHTML="不能为空";
+				}else if(cpwd.value==upwd.value){
+					cpwd_msg.innerHTML="√";
+				}else{
+					cpwd_msg.innerHTML="两次输入不一致";
+				}
+			}
+			function show_email(){
+				email_msg.innerHTML = "请输入邮箱";
+			}
+			function check_email(){
+				if(!email.value){
+					email_msg.innerHTML = "邮箱不能为空";
+				}else if(email.value.indexOf("@") > 0){
+					email_msg.innerHTML = "√";
+				}else{
+					email_msg.innerHTML = "请输入正确格式";
+				}
+			}
+			function show_phone(){
+				phone_msg.innerHTML = "请输入正确手机号";
+			}
+			function check_phone(){
+				if(!phone.value){
+					phone_msg.innerHTML = "手机号码不能为空";
+				}else if(phone.value.length == 11){
+					phone_msg.innerHTML = "√";
+				}else{
+					phone_msg.innerHTML = "请输入正确手机号";
+				}
+			}
+			function register(){
+				let $uname=uname_msg.innerHTML;
+				let $upwd=upwd_msg.innerHTML;
+				let $cpwd=cpwd_msg.innerHTML;
+				let $email=email_msg.innerHTML;
+				let $phone=phone_msg.innerHTML;
+				if($uname=="√" && $upwd=="√" && $cpwd=="√"&&$email=="√"&&$phone=="√"){
+					user_reg();
+				// 	alert("注册成功");
+				// }else{
+				// 	alert("注册失败");
+				 }else{
+					 alert("请检查注册信息")
+				 }
+			}
+			function user_reg(){
+				let _uname = uname.value;
+				let _upwd = upwd.value;
+				let _uemail = email.value;
+				let _phone = phone.value;
+				let _gender = "-1";
+				if(man.checked){
+					_gender = "1"
+				}else if(wman.checked){
+					_gender = "0"
+				}
+				let xhr = new XMLHttpRequest();
+				xhr.onreadystatechange = function(){
+					if(xhr.readyState == 4 && xhr.status == 200){
+						let r = xhr.responseText;
+						if(r == 1){
+							alert("注册成功");
+							location.href="restful_login.html";
+						}else{
+							alert("注册失败");
+						}
+					}
+				}
+				xhr.open("put",`/pro/reg`,true);
+				xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+				let formdata = `uname=${_uname}&upwd=${_upwd}&email=${_uemail}&phone=${_phone}&gender=${_gender}`;
+				xhr.send(formdata);
+			}
+		</script>
+<!-- 		<script type="text/javascript" charset="utf-8">
+		  	mui.init();
+		</script> -->
+	</head>
+	<body>
+		<div style="margin-top: 100px;">
+			<h2 align="center">用户注册</h2>
+			<label for="">请输入用户名:</label><span id="uname_msg"></span><br>
+			<input onfocus="show_uname()" onblur="check_uname()" id="uname" type="text" placeholder="请输入用户名">
+			<br>
+			<label for="">请输入密码:</label><span id="upwd_msg"></span><br>
+			<input onfocus="show_upwd()" onblur="check_upwd()" id="upwd" type="text" placeholder="请输入密码">
+			<br>
+			<label for="">请重复密码:</label><span id="cpwd_msg"></span><br>
+			<input onfocus="show_cpwd()" onblur="check_cpwd()" id="cpwd" type="text" placeholder="请重复密码">
+			<br>
+			<label for="">请输入邮箱:</label><span id="email_msg"></span><br>
+			<input type="text" id="email" onfocus="show_email()" onblur="check_email()" placeholder="请输入邮箱"><br>
+			<label for="">请输入电话:</label><span id="phone_msg"></span><br>
+			<input type="text" id="phone" onfocus="show_phone()" onblur="check_phone()"  placeholder="请输入手机号"><br>
+			<label>请选择性别</label><br>
+	<!-- 		<div class="mui-input-row mui-radio mui-left">
+				<label>男</label>
+				<input name="gender" type="radio" >
+				<label>女</label>
+				<input name="gender" type="radio" >
+				<label>保密</label>
+				<input name="gender" type="radio" >
+			</div> -->
+			男:<input type="radio" name="gender" id="man" value="1">
+			女:<input type="radio" name="gender" id="wman" value="0">
+			保密:<input type="radio" name="gender" id="unk" value="-1" checked=""><br>
+			<button type="button" class="mui-btn mui-btn-blue mui-btn-block" onclick="register()">注册</button>
+			<!-- <button onclick="register()">注册</button> -->
+		</div>
+	</body>
+</html>

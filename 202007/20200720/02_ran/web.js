@@ -1,0 +1,1 @@
+console.log('这是web.js模块');

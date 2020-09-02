@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Homework</title>
+    <script>
+        var stus=[
+            {uid:1001,uname:'张1',age:'19'},
+            {uid:1002,uname:'张2',age:'20'},
+            {uid:1003,uname:'张3',age:'21'}
+        ]
+        function show() {
+            var obj_div = document.getElementById("d1");
+            obj_div.innerHTML = `
+            <table border="1" cellspacing="0">
+                <tr>
+                    <td>学号</td>
+                    <td>姓名</td>
+                    <td>年龄</td>
+                </tr>
+                <tr>
+                    <td>${stus[0].uid}</td>
+                    <td>${stus[0].uname}</td>
+                    <td>${stus[0].age}</td>
+                </tr>
+                <tr>
+                    <td>${stus[1].uid}</td>
+                    <td>${stus[1].uname}</td>
+                    <td>${stus[1].age}</td>
+                </tr>
+                <tr>
+                    <td>${stus[2].uid}</td>
+                    <td>${stus[2].uname}</td>
+                    <td>${stus[2].age}</td>
+                </tr>
+            </table>
+            `
+        }
+    </script>
+</head>
+
+<body>
+    <button onclick="show()">显示</button>
+    <div id="d1"></div>
+</body>
+
+</html>

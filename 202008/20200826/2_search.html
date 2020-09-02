@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        var msg=prompt("请输入要发送的消息内容");
+        var i=msg.search(/([我卧]|wo)\s*([草艹槽操]|cao)/i);
+        if(i==-1){
+            document.write(`<h1 style="color:green">然哥说：${msg}</h1>`);
+        }else{
+            document.write(`<h1 style="color:red">发现敏感词！禁止发送！</h1>`);
+        }
+    </script>
+</body>
+</html>

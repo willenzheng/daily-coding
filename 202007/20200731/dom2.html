@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function show(){
+            var obj_div=document.getElementById("d1");
+            obj_div.innerHTML="我是一只黄焖鸡"
+            var str=obj_div.innerHTML;
+            console.log(str);
+        }
+    </script>
+</head>
+<body>
+    <div id="d1">加油加油</div>
+    <button onclick="show()">获取/修改双标签的内容</button>
+</body>
+</html>

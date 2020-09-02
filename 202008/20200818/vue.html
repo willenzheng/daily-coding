@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+
+    <div id="app1" v-bind:title="some" v-if="seen">
+        {{message}}
+    </div>
+    <!-- <div id="app2" v-for="todo in todos">
+        {{todo.text}}
+    </div> -->
+    <div id="app-4">
+        <ol>
+          <li v-for="todo in todos">
+            {{ todo.text }}
+          </li>
+        </ol>
+      </div>
+
+
+      <div id="app-5">
+          <p>{{message}}</p>
+          <button v-on:click="reverseMessage">反转消息</button>
+      </div>
+
+
+      <div id="app-6">
+          <p>{{message}}</p>
+          <input v-model="message">
+      </div>
+        
+      <ol>
+        <li>test</li>
+        <todo-item></todo-item>
+    </ol>
+
+
+
+    <script>
+        var app=new Vue({
+            el:'#app1',
+            data:{
+                message:"Hello giao!",
+                some:"h1",
+                seen:true
+            }
+        });
+
+        // var app2=new Vue({
+        //     el:'#app2',
+        //     data:{
+        //         todos:[
+        //             {text:"学习javascript"},
+        //             {text:"学习vue"},
+        //             {text:"整个牛项目"}
+        //         ]
+        //     }
+
+        // });
+
+        var app4 = new Vue({
+            el: '#app-4',
+            data: {
+                todos: [
+                { text: '学习 JavaScript' },
+                { text: '学习 Vue' },
+                { text: '整个牛项目' }
+    ]
+  }
+})
+
+        var app5=new Vue({
+            el:"#app-5",
+            data:{
+                message:"Hello Vue.js!"
+            },
+            methods:{
+                reverseMessage:function(){
+                    this.message=this.message.split("").reverse().join("")
+                }
+            }
+        })
+
+
+        var app6=new Vue({
+            el:"#app-6",
+            data:{
+                message:"Hell vue!"
+            }
+        })
+
+
+
+
+        Vue.component("todo-item",{
+            template:"<li>这是个待办项</li>"
+        })
+
+    </script>
+
+
+
+
+
+
+</body>
+</html>

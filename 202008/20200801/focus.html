@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function show(){
+            uname_msg.innerHTML="用户名6~10位";
+        }
+        function check(){
+            var _uname=uname.value
+            if(!_uname){
+                uname_msg.innerHTML="用户名不能为空";
+            }else if(_uname.length<6||_uname.length>10){
+                uname_msg.innerHTML="用户名格式错误";
+            }else {
+                uname_msg.innerHTML="√";
+            }
+        }
+    </script>
+</head>
+<body>
+    <input type="text" onfocus="show()" onblur="check()" id="uname">
+    <span id="uname_msg"></span>
+</body>
+</html>

@@ -1,0 +1,12 @@
+var a=parseFloat('3.14');
+var b=parseFloat('5.1a');
+var c=parseFloat('a5');
+var a1=parseInt('3.14');
+var b1=parseInt('5a');
+var c1=parseInt('a5');
+console.log(a,typeof a);
+console.log(b,typeof b);
+console.log(c,typeof c);
+console.log(a1,typeof a1);
+console.log(b1,typeof b1);
+console.log(c1,typeof c1);

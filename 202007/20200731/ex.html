@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function show(){
+            var obj_input=document.getElementById("n1");
+            var obj_div=document.getElementById("d1");
+            obj_div.innerHTML=`<i>${obj_input.value}</i>`;
+        }
+    </script>
+</head>
+<body>
+    <input type="text" id="n1"><br/>
+    <button onclick="show()">装载文字</button>
+    <div id="d1"></div>
+    </div>
+</body>
+</html>
+

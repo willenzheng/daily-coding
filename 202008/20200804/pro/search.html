@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>根据uid查询用户信息</title>
+    <script>
+        function search(){
+            //获取用户输入的uid
+            // var _uid=uid.value;
+            //获取地址栏中查询字符串的uid
+            //获取查询字符串对象
+            var obj=new URLSearchParams(location.search);
+            var _uid=obj.get("uid");
+            console.log(_uid);
+            //非空验证
+            // if(!_uid){
+            //     alert("请输入用户编号");
+            // }l
+            var xhr=new XMLHttpRequest();
+            xhr.onreadystatechange=function (){
+                if(xhr.readyState==4&&xhr.status==200){
+                    var r=xhr.responseText;
+                    var arr=JSON.parse(r);
+                    if(r==0){
+                        d1.innerHTML=`
+                            <fieldset>
+                                <legend>查询结果</legend>
+                                无相关用户
+                            </fieldset>
+                        `;
+                    }else {
+                        uid.value=_uid;
+                        d1.innerHTML=`
+                            <fieldset>
+                                <legend>用户资料</legend>
+                                用户名<br>
+                                <input type="text" id="uname"><br>
+                                邮箱<br>
+                                <input type="text" id="email"><br>
+                                电话<br>
+                                <input type="text" id="phone"><br>
+                                真实姓名<br>
+                                <input type="text" id="user_name"><br>
+                                性别<br>
+                                <input type="radio" name="gender" id="man" value="1"><label for="man">男</label>
+                                <input type="radio" name="gender" id="woman" value="1"><label for="woman">女</label>
+                                <input type="radio" name="gender" id="unknown" value="1"><label for="unknown">保密</label><br><br>
+                                <button onclick="getConfirm(${arr[0].uid})">修改</button>
+                            </fieldset>
+                        `;
+                        uname.value=arr[0].uname;
+                        email.value=arr[0].email;
+                        phone.value=arr[0].phone;
+                        user_name.value=arr[0].user_name;
+                        if(arr[0].gender==1){
+                            man.checked=true;
+                        }else if(arr[0].gender==0){
+                            woman.checked=true;
+                        }else {
+                            unknown.checked=true;
+                        }
+                    }
+                }
+            }
+            xhr.open("get","/pro/search/"+_uid,true);
+            xhr.send();
+        }
+
+
+        function getConfirm(uid){
+            var r=confirm("确认修改吗？")
+            if(r){
+                update(uid,setGender())
+            }
+        }
+
+
+        function setGender(){
+            if(man.checked){
+                return 1;
+            }else if(woman.checked){
+                return 0;
+            }else {
+                return -1;
+            }
+        }
+
+
+        function update(_uid,_gender){
+            var _uname=uname.value;
+            var _email=email.value;
+            var _phone=phone.value;
+            var _user_name=user_name.value;
+            var xhr=new XMLHttpRequest();
+            xhr.onreadystatechange=function(){
+                if(xhr.readyState==4&&xhr.status==200){
+                    var r=xhr.responseText;
+                    if(r==1){ 
+                        location.href="list.html";
+                    }else{
+                        alert("修改失败,请重试")
+                    }
+                }
+            }
+            xhr.open("put","/pro/search",true)
+            xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+            var formdata=`uname=${_uname}&email=${_email}&phone=${_phone}&user_name=${_user_name}&gender=${_gender}&uid=${_uid}`;
+            xhr.send(formdata);
+        }
+    </script>
+</head>
+<body onload="search()">
+    <fieldset>
+        <legend>用户编号</legend>
+        <input type="text" id="uid" readonly>
+        <!-- <button  onclick="search()">查询</button><br> -->
+    </fieldset>
+    <div id="d1"></div>
+    <div id="d2"></div>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Homework</title>
+    <script>
+        var stus=[
+            {uid:1001,uname:'张1',age:'19'},
+            {uid:1002,uname:'张2',age:'20'},
+            {uid:1003,uname:'张3',age:'21'}
+        ]
+        function show() {
+            var obj_div = document.getElementById("d1");
+            var htmlstr = `
+                <table border="1" cellspacing="0">
+                    <tr>
+                        <td>学号</td>
+                        <td>姓名</td>
+                        <td>年龄</td>
+                    </tr>
+            `;
+            for(var i=0;i<stus.length;i++){
+                htmlstr+=`
+                    <tr>
+                        <td>${stus[i].uid}</td>
+                        <td>${stus[i].uname}</td>
+                        <td>${stus[i].age}</td>
+                    </tr>
+                `;
+            }
+            htmlstr+=`</table>`;
+            console.log(htmlstr);
+            obj_div.innerHTML=htmlstr;
+            document.getElementById("btn1").innerHTML="隐藏";
+            document.getElementById("btn1").onclick=Function("hide()");
+        }
+        function hide(){show
+            document.getElementById("d1").innerHTML='';
+            document.getElementById("btn1").innerHTML="显示";
+            document.getElementById("btn1").onclick=Function("show()");
+        }
+    </script>
+</head>
+
+<body>
+    <button onclick="show()" id="btn1">显示</button>
+    
+    <div id="d1"></div>
+</body>
+
+</html>

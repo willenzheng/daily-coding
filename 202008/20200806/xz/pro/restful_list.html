@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" href="./css/mui.css">
+		<style type="text/css">
+			table {
+				border-collapse: collapse;
+				margin: 0 auto;
+				text-align: center;
+			}
+
+			table td,table th {
+				border: 1px solid #cad9ea;
+				color: #666;
+				height: 30px;
+			}
+			table thead th {
+				background-color: #CCE8EB;
+				width: 100px;
+			}
+			table tr:nth-child(odd) {
+				background: #fff;
+			}
+			table tr:nth-child(even) {
+				background: #F5FAFA;
+			}
+		</style>
+		<script>
+			function show() {
+				let xhr = new XMLHttpRequest();
+				xhr.onreadystatechange = function() {
+					if (xhr.readyState == 4 && xhr.status == 200) {
+						let r = xhr.responseText;
+						let arr = JSON.parse(r);
+						let strInnerHtml =
+							`
+						<table>
+							<caption><h2>用户列表</h2></caption>
+							<tr>
+								<th>编号</th>
+								<th>用户名</th>
+								<th>密码</th>
+								<th>邮箱</th>
+								<th>电话</th>
+								<th>头像</th>
+								<th>真实姓名</th>
+								<th>性别</th>
+								<th>操作</th>
+							</tr>`
+						for (let i = 0; i < arr.length; i++) {
+							let gender = arr[i].gender;
+							let sex = gender == 1 ? "男" : gender == 0 ? "女" : "保密";
+							strInnerHtml +=
+								`
+							<tr>
+								<td>${arr[i].uid}</td>
+								<td>${arr[i].uname}</td>
+								<td>${arr[i].upwd}</td>
+								<td>${arr[i].email}</td>
+								<td>${arr[i].phone}</td>
+								<td>${arr[i].avatar}</td>
+								<td>${arr[i].user_name}</td>
+								<td>${sex}</td>
+								<td>
+									<a href="restful_update.html?uid=${arr[i].uid}">修改</a>
+									<a href="javascript:del(${arr[i].uid})">删除</a>
+								</td>
+							</tr>`
+						}
+						strInnerHtml += `</table>`;
+						d1.innerHTML = strInnerHtml;
+					}
+				}
+				xhr.open("get", `/pro/list`, true);
+				xhr.send();
+			}
+
+			function del(_uid) {
+				//				let _uid = uid.value;
+				// if(!_uid){
+				// 	alert('编号不能为空');
+				// 	return;
+				// }
+				let xhr = new XMLHttpRequest();
+				xhr.onreadystatechange = function() {
+					if (xhr.readyState == 4 && xhr.status == 200) {
+						let r = xhr.responseText;
+						if (r == 1) {
+							alert("删除成功");
+							show();
+						} else {
+							alert("删除失败");
+						}
+					}
+				}
+				xhr.open("delete", `/pro/delete/${_uid}`, true);
+				xhr.send();
+			}
+		</script>
+	</head>
+	<body onload="show()">
+		<div id="d1"></div>
+	</body>
+</html>

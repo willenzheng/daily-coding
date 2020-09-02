@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container {
+            width:1000px;height:400px;
+            position: absolute;
+            cursor: pointer;
+        }
+
+        #left_arrow,
+        #right_arrow {
+            width: 35px;
+            height: 70px;
+            background-color: #ccc;
+            position: absolute;
+            top: 165px;
+            opacity: 0.1;
+        }
+
+        #left_arrow:hover,
+        #right_arrow:hover {
+            opacity: 0.3;
+        }
+
+        #left_arrow {
+            background: url(https://i.loli.net/2020/08/11/3o8LjzJerdXclav.png) no-repeat #000 50%;
+            left: 5px;
+        }
+
+        #right_arrow {
+            background: url(https://i.loli.net/2020/08/11/BqVdcMK1nOrNEwI.png) no-repeat #000 50%;
+            right: 5px;
+        }
+
+        #container>ul {
+            list-style: none;
+        }
+
+        #container>ul>li {
+            position: absolute;
+            bottom:15px;
+        }
+
+
+        #l1 {
+            left:470px;
+        }
+
+        #l2 {
+            left:490px;
+        }
+
+        #l3 {
+            left:510px;
+        }
+
+        #l4 {
+            left:530px;
+        }
+
+        #container>ul>li>div {
+            width:12px;height:12px;
+            border-radius: 50%;
+            background-color: #fff;
+        }
+
+        #container>ul>li>div:hover {
+            background-color: #0aa1ed;
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <img src="https://i.loli.net/2020/08/11/LHowSOMVNuR1W8j.png">
+        <a href="#" title="上一页"><div id="left_arrow"></div></a>
+        <a href="#" title="下一页"><div id="right_arrow"></div></a>
+        <ul>
+            <li id="l1"><div></div></li>
+            <li id="l2"><div></div></li>
+            <li id="l3"><div></div></li>
+            <li id="l4"><div></div></li>
+        </ul>
+    </div>
+</body>
+
+</html>

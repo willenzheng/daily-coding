@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var str="---zhang-dong---"
+        function trim(str){
+            return str.replace(/^-+|-+$/g,"");
+        }
+        function trimLeft(str){
+            return str.replace(/^-+/,"");
+        }
+        function trimRight(str){
+            return str.replace(/-+$/,"","");
+        }
+        console.log(trim(str));
+        console.log(trimLeft(str));
+        console.log(trimRight(str));
+        var str="   zhang dong   "
+        console.log(str.trim());
+        console.log(str.trimLeft());
+        console.log(str.trimRight());
+    </script>
+</body>
+</html>
