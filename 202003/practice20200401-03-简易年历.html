@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>简易年历</title>
+    <style>
+    .active {
+        background: yellow;
+    }
+    </style>
+    <script>
+        window.onload=function () {
+            var arr=[
+                "这是一月",
+                "这是二月",
+                "这是三月",
+                "这是四月",
+                "这是五月",
+                "这是六月",
+                "这是七月",
+                "这是八月",
+                "这是九月",
+                "这是十月",
+                "这是十一月",
+                "这是十二月"
+            ];//使用数组创建12个月的活动内容，之后再通过索引的方式从这里调取内容
+            var oDiv=document.getElementById("tab");//通过id获得div的内容并赋值给oDiv这个变量
+            var aLi=oDiv.getElementsByTagName("li");//将oDiv里面的li标签通过标签的方式获得并赋值给aLi这个变量
+            var oTxt=oDiv.getElementsByTagName("div")[0];//将oDiv里面的div标签通过标签的方式获得，并且通过索引取第一个div（这样之后再加div也不会有影响），赋值给oTxt这个变量
+
+            for (var i=0;i<aLi.length;i++) {//for循环，从i=0到i=3循环4次
+                aLi[i].index=i+1;//
+                aLi[i].onmouseover=function () {//通过函数定义将鼠标移入li上的事件
+                    for (var i=0;i<aLi.length;i++) {//for循环
+                        aLi[i].className=" ";//通过将class设为空的方式清楚li的样式
+                    }
+                    this.className="active";//鼠标移入后，当前li的类名变为active，样式改变
+                    oTxt.innerHTML="<h2>"+this.index+"月活动</h2><p>"+arr[this.index-1]+"</p>"//鼠标移入后，oTxt里面的内容被改变
+                }
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <div id="tab" class="calendar">
+        <ul>
+            <li class="active">
+                <h2>1</h2>
+                <p>JAN</p>
+            </li>
+            <li>
+                <h2>2</h2>
+                <p>FEB</p>
+            </li>
+            <li>
+                <h2>3</h2>
+                <p>MAR</p>
+            </li>
+            <li>
+                <h2>4</h2>
+                <p>APR</p>
+            </li>
+            <li>
+                <h2>5</h2>
+                <p>MAY</p>
+            </li>
+            <li>
+                <h2>6</h2>
+                <p>JUN</p>
+            </li>
+            <li>
+                <h2>7</h2>
+                <p>JUL</p>
+            </li>
+            <li>
+                <h2>8</h2>
+                <p>AUG</p>
+            </li>
+            <li>
+                <h2>9</h2>
+                <p>SEP</p>
+            </li>
+            <li>
+                <h2>10</h2>
+                <p>OCT</p>
+            </li>
+            <li>
+                <h2>11</h2>
+                <p>NOV</p>
+            </li>
+            <li>
+                <h2>12</h2>
+                <p>DEC</p>
+            </li>
+        </ul>
+
+        <div class="text">
+            <h2>1月活动</h2>
+            <p>快过年了，大家可以商量着去哪玩吧~</p>
+        </div>
+
+    </div>
+</body>
+</html>

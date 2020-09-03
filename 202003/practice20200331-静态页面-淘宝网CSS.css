@@ -1,0 +1,17 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+#header{
+    width: 100%;
+    height: 40px;
+}
+#banner{
+    margin: 0 auto;
+    padding: 0;
+    background-color: #f40d4d;
+    text-align: center;
+}
+#banner a img{
+    margin:0;
+}

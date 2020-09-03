@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>测试</title>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    
+</head>
+<body>
+    <div id="app">
+        <a href="#" @click="prev" v-show="index!=0">上一张</a>
+        <a href="#" @click="next" v-show="index!=imgArr.length-1">下一张</a>
+        <br/>
+        <img :src="imgArr[index]" alt="">
+            </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js">    </script>
+    <script>
+       var app = new Vue({
+                el: '#app',
+                data: {
+                    imgArr:[
+                    "https://images.pexels.com/photos/2524874/pexels-photo-2524874.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+                    "https://images.pexels.com/photos/3937730/pexels-photo-3937730.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+                    "https://images.pexels.com/photos/3730957/pexels-photo-3730957.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+                    "https://images.pexels.com/photos/3622616/pexels-photo-3622616.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+                    "https://images.pexels.com/photos/3748034/pexels-photo-3748034.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+                    ],
+                    index:0
+                },
+                methods:{
+                    prev:function(){
+                        this.index--;
+                    },
+                    next:function(){
+                        this.index++;
+                    },
+                }
+            })
+    </script>
+</body>
+</html>

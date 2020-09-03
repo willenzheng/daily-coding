@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>选项卡</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+        }
+        #div1 {
+            background: red;
+        }
+        #div2 {
+            background: green;
+            display: none;
+        }
+    </style>
+    <script>
+        function toRed() {
+            document.getElementById("div1").style="display:block";
+            document.getElementById("div2").style="display:none";
+            document.getElementById("btn1").style="background:gray"
+            document.getElementById("btn2").style="background:none"
+        }
+        function toGreen() {
+            document.getElementById("div1").style="display:none";
+            document.getElementById("div2").style="display:block";
+            document.getElementById("btn1").style="background:none"
+            document.getElementById("btn2").style="background:gray"
+        }
+    </script>
+</head>
+<body>
+    <button id="btn1" onclick="toRed()">红色</button>
+    <button id="btn2" onclick="toGreen()">绿色</button>
+    <div id="div1"></div>
+    <div id="div2"></div>
+</body>
+</html>

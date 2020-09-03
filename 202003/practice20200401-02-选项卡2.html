@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>选项卡</title>
+    <style>
+        #div1 .active {
+            background: yellow;
+        }
+
+        #div1 div {
+            width: 200px;
+            height: 200px;
+            background: #CCC;
+            border: 1px solid #999;
+            display: none;
+        }
+    </style>
+    <script>
+        window.onload = function () {//页面加载后再加载脚本
+            var oDiv = document.getElementById("div1");//定义div1的DOM
+            var aBtn = document.getElementsByTagName("input");//定义4个按钮
+            var aDiv = oDiv.getElementsByTagName("div");//定义div1容器内的4个div
+            for (var i = 0; i < aBtn.length; i++) {
+                aBtn[i].index = i;//给每个按钮附上一个index值
+                aBtn[i].onclick = function () {//每个按钮点击触发事件
+                    for (var i = 0; i < aBtn.length; i++) {
+                        aBtn[i].className = " ";//点击按钮后，每个按钮的类名被设置为空，以清除样式
+                        aDiv[i].style.display = "none";//点击按钮后，每个div被隐藏
+                    };
+                    this.className = "active";//点击按钮后，当前按钮的类型被设置为“active”,以使其背景颜色变成黄色
+                    aDiv[this.index].style.display = "block";//点击按钮后，跟当前按钮所绑定的div显示出来
+                };
+            };
+        };
+    </script>
+</head>
+
+<body>
+    <div id="div1">
+        <input class="active" type="button" value="教育">
+        <input type="button" value="培训">
+        <input type="button" value="招生">
+        <input type="button" value="出国">
+        <div style="display: block;">1111</div>
+        <div>2222</div>
+        <div>3333</div>
+        <div>4444</div>
+    </div>
+</body>
+
+</html>
