@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>实现带样式的表单验证</title>
+    <style>
+        table{
+            width:700px;
+        }
+        td:first-child{
+            width:60px;
+        }
+        td:nth-child(2){
+            width:200px;
+        }
+        td:first-child+td{
+            width:200px;
+        }
+        td span{
+            color:red;
+        }
+        .vali_info{
+            display:none;
+        }
+        .txt_focus{
+            border-top:2px solid black;
+            border-left: 2px solid black;
+        }
+        .vali_success,.vali_fail{
+            background-repeat:no-repeat;
+            background-position:left center;
+            display:block;
+        }
+        .vali_success{
+            background-image:url("https://images.pexels.com/photos/4603779/pexels-photo-4603779.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
+            padding-left:20px;
+            width:0px;
+            height:20px;
+            overflow:hidden;
+        }
+        .vali_fail{
+            background-image:url("https://images.pexels.com/photos/1868833/pexels-photo-1868833.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
+            border:1px solid red;
+            background-color:#ddd;
+            color:red;
+            padding-left:30px;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1">
+        <h2>增加管理员</h2>
+        <table>
+            <tr>
+                <td>姓名：</td>
+                <td>
+                    <input name="username"/>
+                    <span>*</span>
+                </td>
+                <td>
+                    <div class="vali_info">
+                        10个字符以内的字母、数字或下划线的组合
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>密码：</td>
+                <td>
+                    <input type="password" name="pwd" id="">
+                    <span>*</span>
+                </td>
+                <td>
+                    <div class="vali_info">6位数字</div>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td colspan="2">
+                    <input type="submit" value="保存">
+                    <input type="reset" value="重填">
+                </td>
+            </tr>
+        </table>
+    </form>
+    <script>
+        var txtName=document.getElementsByName("username")[0];
+        txtName.onblur=function(){
+            var div=this
+                    .parentElement
+                    .nextElementSibling
+                    .children[0];
+            var reg=/^\w{1,10}$/;
+            var result=reg.test(this.value);
+            if(result){
+                div.className="vali_success";
+            }else{
+                div.className="vali_fail"
+            }
+        }
+    </script>
+</body>
+</html>
