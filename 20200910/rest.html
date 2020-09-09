@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+//         function foo(a, b) {
+//     var i, rest = [];
+//     if (arguments.length > 2) {
+//         for (i = 2; i<arguments.length; i++) {
+//             rest.push(arguments[i]);
+//         }
+//     }
+//     console.log('a = ' + a);
+//     console.log('b = ' + b);
+//     console.log(rest);
+// }
+// foo(1,2,3,4,5);
+        function fn(a,b,...rest){
+            console.log(a);
+            console.log(b);
+            console.log(rest);
+        }
+        fn(1,2,3,4,5)
+    </script>
+</body>
+</html>
