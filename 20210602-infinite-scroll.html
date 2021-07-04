@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script src="https://unpkg.com/vue-infinite-scroll"></script>
+  <style>
+    .app {
+      overflow: auto;
+    }
+  </style>
+</head>
+
+<body>
+  <div 
+    class="app" 
+    style="height: 80px;background-color: #ccc;width: 400px;margin: 0 auto;"
+  >
+    <div style="height: 600px;background-color: #aaa;width: 300px;margin: 0 auto;"></div>
+    <div>
+      <div 
+        class="child" 
+        style="height: 0px;background-color: #ddd;width: 300px;margin: 0 auto;"
+        v-infinite-scroll="loadMore" 
+        infinite-scroll-disabled="busy" 
+        infinite-scroll-distance="0"
+      >
+      </div>
+    </div>
+  </div>
+  <script>
+    var app = document.querySelector('.app')
+    new Vue({
+      el: app,
+      data: function () {
+        return { busy: false,
+        }
+      },
+
+      methods: {
+        loadMore: function () {
+          var self = this;
+          self.busy = true;
+          console.log('loading... ' + new Date());
+          setTimeout(function () {
+            var app = document.querySelector('.app')
+            var height = app.clientHeight;
+            app.style.height = height + 300 + 'px';
+            console.log('end... ' + new Date());
+            self.busy = false
+          }, 1000)
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
