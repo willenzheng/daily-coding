@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    html, body {
+      height: 100%;
+    }
+    body {
+      position: relative;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .container {
+      width: 300px;
+      height: 300px;
+      border: 4px solid #868686;
+    }
+    .content {
+      z-index: -1;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-140px, -150px);
+      width: 280px;
+      height: 500px;
+      background: #eee;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="content"></div>
+  </div>
+  <script>
+    let container = document.querySelector('.container');
+    let content = document.querySelector('.content')
+    container.onmousewheel = function scroll(event) {
+      console.log(event)
+      let y = event.deltaY;
+      content.style.transfrom = `translate(-140px , ${(-150+y)}px)`
+      console.log(content.style)
+    }
+  </script>
+</body>
+</html>

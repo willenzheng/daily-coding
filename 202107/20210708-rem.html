@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    html {
+      font-size: 2rem;
+    }
+    body {
+      margin: 0
+    }
+    .container {
+      display: flex;
+    }
+    .left-px {
+      flex-shrink: 0;
+      width: 1915px;
+      height: 100px;
+      background-color: aqua;
+    }
+    .right-px {
+      width: 187.5px;
+      height: 100px;
+      background-color: rgb(53, 97, 97);
+    }
+    .left-rem {
+      width: 2rem;
+      height: 100px;
+      background-color: rgb(105, 207, 85);
+    }
+    .right-rem {
+      width: 2rem;
+      height: 100px;
+      background-color: rgb(151, 245, 45);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="left-px"></div>
+    <div class="right-px"></div>
+  </div>
+  <div class="container">
+    <div class="left-rem"></div>
+    <div class="right-rem"></div>
+  </div>
+</body>
+</html>

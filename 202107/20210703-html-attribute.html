@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML 属性</title>
+  <style>
+    .div1:focus {
+      background-color: aqua;
+    }
+
+    .container {
+      width: 100px;
+      height: 100px;
+      background-color: beige;
+    }
+
+    .droparea:-moz-drag-over {
+      outline: 1px solid blue;
+    }
+    .droparea:-webkit-drag-over {
+      outline: 1px solid blue;
+    }
+  </style>
+</head>
+
+<body>
+  <button accesskey="z" onclick="alert('你激活了我')" contenteditable="true">使用键盘Z激活我</button>
+  <input type="text" autocapitalize="characters">
+  <div class="div1" contenteditable="false" autocapitalize="characters" autofocus="true">
+    <span>123</span>
+    <span>456</span>
+  </div>
+  <div id="data-set" data-giao="giao" data-biu="nihao" onclick="consoleData()">点击我以获取我所携带的信息</div>
+  <div draggable="true" dropzone="link" ondrag="handelOnDrag()" ondragend="handleDragEnd()" >我可以拖动吗？</div>
+  <div class="container droparea" dropzone="move" droppable="true" ondragover="handleDragOver()" ondragenter="handleDragEnter()" onclick=handleClick()></div>
+  <script>
+    function consoleData() {
+      let dataSet = document.querySelector('#data-set');
+      console.log([dataSet])
+    }
+
+    function handelOnDrag() {
+      console.log('onDrag')
+    }
+
+    function handleDragEnd() {
+      console.log('dragEnd')
+    }
+
+    function handleDragOver(event) {
+      console.log(event)
+      console.log('dragOver')
+      return false
+    }
+
+    function handleDragEnter() {
+      console.log('dragEnter')
+      return false
+    }
+
+    function handleClick(e) {
+      console.log(e)
+    }
+  </script>
+</body>
+
+</html>
