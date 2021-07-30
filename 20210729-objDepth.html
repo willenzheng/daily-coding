@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://lib.baomitu.com/echarts/5.1.2/echarts.common.js"></script>
+</head>
+
+<body>
+  <div id="main" style="width: 600px;height:400px;"></div>
+  <script type="text/javascript">
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('main'));
+
+    // 指定图表的配置项和数据
+    var option = {
+      tooltip: {},
+      legend: {
+        data: ['验证引用', '可选链'],
+      },
+      xAxis: {
+        name: '嵌套深度',
+        data: ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
+      },
+      yAxis: {
+        name: '代码量'
+      },
+      series: [
+        {
+          name: '验证引用',
+          type: 'line',
+          data: [1, 2, 4, 7, 11, 16, 22, 29, 37, 46, 56],
+          color: 'orange'
+        },
+        {
+          name: '可选链',
+          type: 'line',
+          data: [0, 1, 2, 3, 4, 5, 6, 7, 8 ,9, 10],
+          color: 'green'
+        }
+      ]
+    };
+
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+  </script>
+</body>
+
+</html>
