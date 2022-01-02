@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    html, body {
+      height: 100%;
+    }
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    #my-number {
+      font-size: 180px;
+      font-weight: bold;
+      font-family: 'fira code';
+    }
+  </style>
+</head>
+
+<body>
+  <span id="my-number"></span>
+  <script>
+    addNumber(0, 600, 'my-number', 5000);
+    function addNumber(start, end, id, duration = 500) {
+      const o = document.getElementById(id);
+      const oneStepTime = 10;
+      const oneStepNum = parseInt(Math.abs(end - start) / (duration / oneStepTime))
+      let i = start;
+      let Interval;
+      if (i < end) {
+        Interval = setInterval(function () {
+          i += oneStepNum; // 设置每次增加的动态数字，可调整
+          if (i > end) {
+            clearInterval(Interval); // 清除setInter  val的time，这个方法w3c可具体查看文档
+            o.innerHTML = end.toLocaleString(); // 此赋值是为了避免最后一次增加过后的数据和真实数据不同
+            i = 0;
+          } else {
+            o.innerHTML = i.toLocaleString();
+          }
+        }, oneStepTime); // 数据跳转的速度控制
+      } else {
+        Interval = setInterval(function () {
+          i -= oneStepNum; // 设置每次增加的动态数字，可调整
+          if (i < end) {
+            clearInterval(Interval); // 清除setInter  val的time，这个方法w3c可具体查看文档
+            o.innerHTML = end.toLocaleString(); // 此赋值是为了避免最后一次增加过后的数据和真实数据不同
+            i = 0;
+          } else {
+            o.innerHTML = i.toLocaleString();
+          }
+        }, oneStepTime); // 数据跳转的速度控制
+      }
+    }
+  </script>
+</body>
+
+</html>

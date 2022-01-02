@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    @keyframes pendding {
+      from {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0.2
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+    @keyframes throw {
+      0% {
+        transform: translate(0px, 0px);
+      }
+      10% {
+        transform: translate(8px, -10px);
+      }
+      20% {
+        transform: translate(10px, -16px);
+      }
+      30% {
+        transform: translate(15px, -20px);
+      }
+      40% {
+        transform: translate(22px, -22px);
+      }
+      50% {
+        transform: translate(40px, -23px);
+      }
+      60% {
+        transform: translate(48px, -20px);
+      }
+      70% {
+        transform: translate(56px, -12px);
+      }
+      80% {
+        transform: translate(64px, -4px);
+      }
+      90% {
+        transform: translate(72px, 8px);
+      }
+      100% {
+        transform: translate(80px, 20px);
+      }
+    }
+
+    html,
+    body {
+      height: 100%;
+    }
+
+    body {
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      position: relative;
+      height: 200px;
+    }
+
+    .wrapper,
+    .box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .wrapper {
+      margin-bottom: 40px;
+      width: 140px;
+      height: 60px;
+      background: #c1c1c1;
+      border-radius: 8px;
+      animation: pendding 2s infinite;
+      color: #b1b1b1;
+    }
+
+    .box {
+      width: 120px;
+      height: 40px;
+      background: #fff;
+      border-radius: 4px;
+    }
+
+    .fulfilled {
+      background: #06c306;
+      transition: all 1s;
+      animation: none;
+      color: #019202;
+    }
+
+    .rejected {
+      background: #fb5b5b;
+      transition: all 1s;
+      animation: none;
+      color: #fb0000;
+    }
+
+    .btn-group {
+      text-align: center;
+      transition: all 0.5s;
+    }
+
+    .throw {
+      
+      width: 40px;
+      height: 40px;
+      border: 1px solid #000;
+      border-radius: 50%;
+      position: absolute;
+      top: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: -1;
+      display: none;
+      animation: throw 1s;
+      transform: translate(80px, 20px);
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="wrapper">
+      <div class="box">
+        PENDDING
+      </div>
+    </div>
+    <div class="throw">
+      RES
+    </div>
+    <div class="btn-group">
+      <button onClick="fulfilled()">fulfilled</button>
+      <button onClick="rejected()">rejected</button>
+    </div>
+  </div>
+
+  <script>
+    function fulfilled() {
+      document.querySelector('.wrapper').className = 'wrapper fulfilled'
+      document.querySelector('.box').innerHTML = 'FULFILLED'
+      hideBtn();
+      document.querySelector('.throw').innerHTML = 'RES'
+      setTimeout(throwUp,500)
+    }
+    function rejected() {
+      document.querySelector('.wrapper').className = 'wrapper rejected'
+      document.querySelector('.box').innerHTML = 'REJECTED'
+      hideBtn();
+      document.querySelector('.throw').innerHTML = 'ERR'
+      setTimeout(throwUp,500)
+    }
+    function hideBtn() {
+      document.querySelector('.btn-group').style.opacity = '0'
+      setTimeout(()=>{
+        document.querySelector('.btn-group').style.display = 'none'
+      },500)
+    }
+    function throwUp() {
+      document.querySelector('.throw').style.display = 'flex'
+    }
+  </script>
+</body>
+
+</html>
